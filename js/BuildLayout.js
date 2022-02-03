@@ -19,10 +19,7 @@ class BuildLayout {
 
     label.textContent = text;
 
-    label.setAttribute(
-      'class',
-      !isError ? 'main__form-label' : 'main__form-label main__form-label--error',
-    );
+    label.setAttribute('class', !isError ? 'main__form-label' : 'main__form-error');
 
     return label;
   }
@@ -47,6 +44,7 @@ class BuildLayout {
 
     const labelPhone = this.createLabel('Numer telefonu', false);
     const labelCode = this.createLabel('Kod odbioru', false);
+    const labelError = this.createLabel('Sprawdź poprawność wprowadzonych danych', true);
     const inputPhone = this.createInput('tel', 'phone', 'xxx-xxx-xxx');
     const inputCode = this.createInput('number', 'code', 'xxxx');
     const btn = this.createBtn('submit', 'Odbierz paczkę', 'main__btn');
@@ -57,6 +55,7 @@ class BuildLayout {
     labelCode.appendChild(inputCode);
     form.appendChild(labelPhone);
     form.appendChild(labelCode);
+    form.appendChild(labelError);
     form.appendChild(btn);
 
     this.container.appendChild(form);

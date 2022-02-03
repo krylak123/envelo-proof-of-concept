@@ -1,5 +1,7 @@
 class Validation {
   constructor(tel, code) {
+    this.labelError = document.querySelector('.main__form-error');
+
     this.tel = tel;
     this.code = code;
   }
@@ -33,7 +35,11 @@ class Validation {
   }
 
   start() {
+    this.labelError.classList.remove('main__form-error--show');
+
     if (this.checkTelValue() && this.checkCodeValue()) return true;
+
+    this.labelError.classList.add('main__form-error--show');
 
     return false;
   }
