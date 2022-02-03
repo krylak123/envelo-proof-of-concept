@@ -1,27 +1,28 @@
 import BuildLayout from './BuildLayout.js';
 import Validation from './Validation.js';
+import Timer from './Timer.js';
 
 class Panel {
   constructor() {
     this.build = new BuildLayout();
+    this.timer = new Timer();
 
     this.container = document.querySelector('.main__form-container');
     this.btn = document.querySelector('.main__btn');
-
-    this.inputTelValue = '';
-    this.inputCodeValue = '';
   }
 
   showResult() {
-    const [modal, btnEnd, btnNext] = this.build.createModal(333);
+    this.timer.stopTimer();
+    const [modal, btnEnd, btnNext] = this.build.createModal(this.timer.getTime());
 
     btnEnd.addEventListener('click', () => {
       modal.close();
-      this.restart();
+      this.restart(false);
     });
 
     btnNext.addEventListener('click', () => {
       modal.close();
+      this.restart(true);
     });
 
     modal.showModal();
@@ -42,6 +43,7 @@ class Panel {
   }
 
   start() {
+    this.timer.startTimer();
     this.btn.classList.add('main__btn--hidden');
     this.build.createForm();
 
@@ -50,9 +52,15 @@ class Panel {
     btnSubmit.addEventListener('click', this.checkValues.bind(this));
   }
 
-  restart() {
-    this.container.textContent = '';
-    this.btn.classList.remove('main__btn--hidden');
+  restart(isNext) {
+    this.timer.resetTimer();
+
+    if (isNext) {
+      this.timer.startTimer();
+    } else {
+      this.container.textContent = '';
+      this.btn.classList.remove('main__btn--hidden');
+    }
   }
 
   init() {
