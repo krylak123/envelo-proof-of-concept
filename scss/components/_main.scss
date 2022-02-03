@@ -1,0 +1,170 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 100vh;
+  max-width: 1240px;
+  background-color: #ffffffd3;
+  backdrop-filter: blur(2px);
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__title-img {
+    width: 90%;
+  }
+
+  &__text {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 120%;
+  }
+
+  &__btn {
+    display: block;
+    margin-top: 80px;
+    padding: 15px 20px;
+    font-family: $font-family-primary;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    outline-style: none;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px #ff5858;
+    background-color: #ff5858;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      box-shadow: 0 0 0 0 #fff, 0 0 0 5px #ff5858;
+    }
+  }
+
+  @media screen and (orientation: landscape) {
+    padding-bottom: 18px;
+
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__title-img {
+      width: 30%;
+    }
+
+    &__text {
+      font-size: 1.7rem;
+    }
+
+    &__btn {
+      margin-top: 20px;
+    }
+  }
+
+  @include mq(xxsmall, port) {
+    &__title-img {
+      width: 80%;
+    }
+
+    &__text-container {
+      width: 90%;
+    }
+
+    &__text {
+      font-size: 2rem;
+    }
+  }
+
+  @include mq(small, port) {
+    &__title-img {
+      width: 100%;
+    }
+
+    &__text-container {
+      width: 70%;
+    }
+
+    &__text {
+      font-size: 3rem;
+    }
+
+    &__btn {
+      margin-top: 80px;
+      padding: 25px 30px;
+      font-size: 3.5rem;
+      border-radius: 20px;
+      box-shadow: 0 0 0 6px #fff, 0 0 0 12px #ff5858;
+
+      &:hover {
+        box-shadow: 0 0 0 0 #fff, 0 0 0 6px #ff5858;
+      }
+    }
+  }
+
+  @include mq(small, land) {
+    &__title {
+      margin-bottom: 10px;
+    }
+
+    &__title-img {
+      width: 40%;
+    }
+
+    &__text {
+      font-size: 2rem;
+    }
+
+    &__btn {
+      margin-top: 30px;
+    }
+  }
+
+  @include mq(medium, port) {
+    &__text-container {
+      width: 65%;
+    }
+
+    &__text {
+      font-size: 3.5rem;
+    }
+
+    &__btn {
+      margin-top: 100px;
+      padding: 30px 40px;
+      font-size: 4rem;
+      border-radius: 20px;
+    }
+  }
+
+  @include mq(medium, land) {
+    &__title-img {
+      width: 70%;
+    }
+
+    &__text {
+      font-size: 2.5rem;
+    }
+
+    &__btn {
+      margin-top: 100px;
+      padding: 20px 25px;
+      font-size: 3rem;
+      border-radius: 20px;
+    }
+  }
+
+  @include mq(large, land) {
+    padding: 70px 50px;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0px 20px 30px 5px rgba(66, 68, 90, 1);
+  }
+}
