@@ -5,14 +5,26 @@ class Panel {
   constructor() {
     this.build = new BuildLayout();
 
+    this.container = document.querySelector('.main__form-container');
     this.btn = document.querySelector('.main__btn');
 
     this.inputTelValue = '';
     this.inputCodeValue = '';
   }
 
-  showResult(tel, code) {
-    console.log('show modal');
+  showResult() {
+    const [modal, btnEnd, btnNext] = this.build.createModal(333);
+
+    btnEnd.addEventListener('click', () => {
+      modal.close();
+      this.restart();
+    });
+
+    btnNext.addEventListener('click', () => {
+      modal.close();
+    });
+
+    modal.showModal();
   }
 
   checkValues(e) {
@@ -26,7 +38,7 @@ class Panel {
 
     const validation = new Validation(telValue, codeValue);
 
-    if (validation.start()) return this.showResult(telValue, codeValue);
+    if (validation.start()) return this.showResult();
   }
 
   start() {
@@ -36,6 +48,11 @@ class Panel {
     const btnSubmit = document.querySelector('.main__btn--submit');
 
     btnSubmit.addEventListener('click', this.checkValues.bind(this));
+  }
+
+  restart() {
+    this.container.textContent = '';
+    this.btn.classList.remove('main__btn--hidden');
   }
 
   init() {

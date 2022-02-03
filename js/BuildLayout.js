@@ -3,13 +3,13 @@ class BuildLayout {
     this.container = document.querySelector('.main__form-container');
   }
 
-  createBtn(type, text) {
+  createBtn(type, text, className) {
     const btn = document.createElement('button');
 
     btn.textContent = text;
 
     btn.setAttribute('type', type);
-    btn.setAttribute('class', 'main__btn main__btn--submit');
+    btn.setAttribute('class', `${className} ${className}--submit`);
 
     return btn;
   }
@@ -49,7 +49,7 @@ class BuildLayout {
     const labelCode = this.createLabel('Kod odbioru', false);
     const inputPhone = this.createInput('tel', 'phone', 'xxx-xxx-xxx');
     const inputCode = this.createInput('number', 'code', 'xxxx');
-    const btn = this.createBtn('submit', 'Odbierz paczkę');
+    const btn = this.createBtn('submit', 'Odbierz paczkę', 'main__btn');
 
     form.setAttribute('class', 'main__form');
 
@@ -62,7 +62,29 @@ class BuildLayout {
     this.container.appendChild(form);
   }
 
-  createModal() {}
+  createModal(timer) {
+    const modal = document.createElement('dialog');
+    const title = document.createElement('h1');
+    const text = document.createElement('p');
+    const btnEnd = this.createBtn('button', 'To wszystko na dziś', 'modal__btn');
+    const btnNext = this.createBtn('button', 'Odbierz kolejną paczkę', 'modal__btn');
+
+    modal.setAttribute('class', 'modal');
+
+    title.setAttribute('class', 'modal__title');
+    title.textContent = 'Paczka odebrana!';
+    text.setAttribute('class', 'modal__text');
+    text.textContent = `Zrobiłeś to w czasie ${timer} sekund! Czy możemy zrobić dla Ciebie coś jeszcze?`;
+
+    modal.appendChild(title);
+    modal.appendChild(text);
+    modal.appendChild(btnEnd);
+    modal.appendChild(btnNext);
+
+    this.container.appendChild(modal);
+
+    return [modal, btnEnd, btnNext];
+  }
 }
 
 export default BuildLayout;
