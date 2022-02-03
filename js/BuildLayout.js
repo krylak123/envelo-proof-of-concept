@@ -31,14 +31,13 @@ class BuildLayout {
     const input = document.createElement('input');
 
     if (type === 'tel') {
-      input.setAttribute('pattern', '[0-9]{3}-[0-9]{3}-[0-9]{3}');
+      input.setAttribute('pattern', '[0-9]{9}');
     }
 
     input.setAttribute('type', type);
     input.setAttribute('name', name);
     input.setAttribute('placeholder', placeholder);
     input.setAttribute('class', 'main__form-input');
-    input.setAttribute('required', true);
 
     return input;
   }
@@ -62,6 +61,8 @@ class BuildLayout {
 
     this.container.appendChild(form);
   }
+
+  createModal() {}
 }
 
 export default BuildLayout;
