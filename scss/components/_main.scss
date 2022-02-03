@@ -26,9 +26,37 @@
     line-height: 120%;
   }
 
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  &__form-label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+
+    &--error {
+      color: #f00;
+    }
+  }
+
+  &__form-input {
+    padding: 5px 10px;
+    font-size: 2rem;
+    text-align: center;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
   &__btn {
     display: block;
-    margin-top: 80px;
+    margin-top: 50px;
     padding: 15px 20px;
     font-family: $font-family-primary;
     font-size: 1.7rem;
@@ -46,6 +74,10 @@
     &:hover {
       color: #fff;
       box-shadow: 0 0 0 0 #fff, 0 0 0 5px #ff5858;
+    }
+
+    &--hidden {
+      display: none;
     }
   }
 
@@ -66,6 +98,21 @@
 
     &__btn {
       margin-top: 20px;
+    }
+
+    &__form {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 0;
+    }
+
+    &__form-label {
+      flex-basis: 45%;
+      margin: 0 10px 0;
+      font-size: 1.3rem;
+      text-align: center;
     }
   }
 
