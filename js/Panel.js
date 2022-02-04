@@ -43,6 +43,7 @@ class Panel {
 
     if (validation.start()) {
       this.loader.showLoader();
+      validation.hideError();
 
       setTimeout(() => {
         this.showResult();

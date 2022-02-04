@@ -34,14 +34,32 @@ class Validation {
     return isValid;
   }
 
-  start() {
-    this.labelError.classList.remove('main__form-error--show');
-
-    if (this.checkTelValue() && this.checkCodeValue()) return true;
-
+  showError(text) {
+    this.labelError.textContent = text;
     this.labelError.classList.add('main__form-error--show');
+  }
 
-    return false;
+  hideError() {
+    this.labelError.classList.remove('main__form-error--show');
+  }
+
+  start() {
+    let isValid = false;
+
+    if (this.checkTelValue() && this.checkCodeValue()) {
+      isValid = true;
+    } else if (this.checkTelValue() && !this.checkCodeValue()) {
+      this.showError('Niepoprawny kod odbioru');
+      isValid = false;
+    } else if (!this.checkTelValue() && this.checkCodeValue()) {
+      this.showError('Niepoprawny telefon');
+      isValid = false;
+    } else {
+      this.showError('Niepoprawne dane');
+      isValid = false;
+    }
+
+    return isValid;
   }
 }
 
