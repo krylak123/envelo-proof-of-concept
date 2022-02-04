@@ -64,10 +64,6 @@
       align-items: flex-start;
     }
 
-    &__title {
-      flex-basis: 100%;
-    }
-
     &__text {
       flex-basis: 100%;
     }
@@ -75,6 +71,14 @@
     &__btn {
       flex-basis: 45%;
       margin-right: 30px;
+    }
+  }
+
+  @include mq(medium, land) {
+    padding: 50px;
+
+    &__btn {
+      flex-basis: 40%;
     }
   }
 }

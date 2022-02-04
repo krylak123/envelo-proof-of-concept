@@ -1,17 +1,19 @@
 import BuildLayout from './BuildLayout.js';
-import Validation from './Validation.js';
 import Timer from './Timer.js';
+import Loader from './Loader.js';
+import Validation from './Validation.js';
 
 class Panel {
   constructor() {
     this.build = new BuildLayout();
     this.timer = new Timer();
-
+    this.loader = new Loader();
     this.container = document.querySelector('.main__form-container');
     this.btn = document.querySelector('.main__btn');
   }
 
   showResult() {
+    this.loader.closeLoader();
     this.timer.stopTimer();
     const [modal, btnEnd, btnNext] = this.build.createModal(this.timer.getTime());
 
@@ -39,7 +41,13 @@ class Panel {
 
     const validation = new Validation(telValue, codeValue);
 
-    if (validation.start()) return this.showResult();
+    if (validation.start()) {
+      this.loader.showLoader();
+
+      setTimeout(() => {
+        this.showResult();
+      }, Math.floor(Math.random() * (1500 - 500) + 500));
+    }
   }
 
   start() {
