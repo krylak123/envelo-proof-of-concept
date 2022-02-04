@@ -1,6 +1,7 @@
 class BuildLayout {
   constructor() {
-    this.container = document.querySelector('.main__form-container');
+    this.formContainer = document.querySelector('.main__form-container');
+    this.modalContainer = document.querySelector('.modal__wrapper');
   }
 
   createBtn(type, text, className) {
@@ -61,7 +62,7 @@ class BuildLayout {
     form.appendChild(labelError);
     form.appendChild(btn);
 
-    this.container.appendChild(form);
+    this.formContainer.appendChild(form);
   }
 
   createModal(timer) {
@@ -83,7 +84,7 @@ class BuildLayout {
     modal.appendChild(btnEnd);
     modal.appendChild(btnNext);
 
-    this.container.appendChild(modal);
+    this.modalContainer.appendChild(modal);
 
     return [modal, btnEnd, btnNext];
   }

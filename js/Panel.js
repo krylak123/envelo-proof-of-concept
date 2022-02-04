@@ -9,7 +9,8 @@ class Panel {
     this.timer = new Timer();
     this.loader = new Loader();
 
-    this.container = document.querySelector('.main__form-container');
+    this.formContainer = document.querySelector('.main__form-container');
+    this.modalContainer = document.querySelector('.modal__wrapper');
     this.btn = document.querySelector('.main__btn');
   }
 
@@ -69,9 +70,10 @@ class Panel {
     this.timer.resetTimer();
 
     if (isNext) {
+      this.modalContainer.textContent = '';
       this.timer.startTimer();
     } else {
-      this.container.textContent = '';
+      this.formContainer.textContent = '';
       this.btn.classList.remove('main__btn--hidden');
     }
   }
