@@ -9,12 +9,24 @@ class Validation {
   checkTelValue() {
     let isValid = true;
 
-    if (!this.tel) {
+    if (this.tel.length !== 9) {
       isValid = false;
     }
 
-    if (String(this.tel).length !== 9) {
+    if (!this.tel.match(/^\d+/)) {
       isValid = false;
+    }
+
+    for (let i = 0; i < this.tel.length; i += 1) {
+      if (!Number(this.tel[i])) {
+        if (this.tel[i] !== '0') {
+          isValid = false;
+        }
+      }
+
+      if (this.tel[i] === ' ') {
+        isValid = false;
+      }
     }
 
     return isValid;
@@ -23,11 +35,11 @@ class Validation {
   checkCodeValue() {
     let isValid = true;
 
-    if (!this.code) {
+    if (this.code.length !== 4) {
       isValid = false;
     }
 
-    if (String(this.code).length !== 4) {
+    if (!this.code.match(/^\d+/)) {
       isValid = false;
     }
 
@@ -44,13 +56,15 @@ class Validation {
   }
 
   start() {
+    const isTelValid = this.checkTelValue();
+    const isCodeValid = this.checkCodeValue();
     let isValid = false;
 
-    if (this.checkTelValue() && this.checkCodeValue()) {
+    if (isTelValid && isCodeValid) {
       isValid = true;
-    } else if (this.checkTelValue() && !this.checkCodeValue()) {
+    } else if (isTelValid && !isCodeValid) {
       this.showError('Niepoprawny kod odbioru');
-    } else if (!this.checkTelValue() && this.checkCodeValue()) {
+    } else if (!isTelValid && isCodeValid) {
       this.showError('Niepoprawny telefon');
     } else {
       this.showError('Niepoprawne dane');

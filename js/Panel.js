@@ -37,14 +37,17 @@ class Panel {
     const inputTel = document.querySelector('.main__form-input[type=tel]');
     const inputCode = document.querySelector('.main__form-input[type=number]');
 
-    const telValue = Number(inputTel.value.trim());
-    const codeValue = Number(inputCode.value.trim());
+    const telValue = inputTel.value.trim();
+    const codeValue = inputCode.value.trim();
 
     const validation = new Validation(telValue, codeValue);
 
     if (validation.start()) {
       validation.hideError();
       this.loader.showLoader();
+
+      inputTel.value = '';
+      inputCode.value = '';
 
       setTimeout(() => {
         this.showResult();
