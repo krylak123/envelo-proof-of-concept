@@ -50,13 +50,10 @@ class Validation {
       isValid = true;
     } else if (this.checkTelValue() && !this.checkCodeValue()) {
       this.showError('Niepoprawny kod odbioru');
-      isValid = false;
     } else if (!this.checkTelValue() && this.checkCodeValue()) {
       this.showError('Niepoprawny telefon');
-      isValid = false;
     } else {
       this.showError('Niepoprawne dane');
-      isValid = false;
     }
 
     return isValid;

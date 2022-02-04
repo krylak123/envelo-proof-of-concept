@@ -8,10 +8,9 @@ class Loader {
     const loaderContainer = document.createElement('div');
 
     loaderContent.setAttribute('class', 'loader__content');
-
     loaderContainer.setAttribute('class', 'loader');
-    loaderContainer.appendChild(loaderContent);
 
+    loaderContainer.appendChild(loaderContent);
     document.body.appendChild(loaderContainer);
   }
 

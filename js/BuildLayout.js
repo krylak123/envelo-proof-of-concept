@@ -24,11 +24,14 @@ class BuildLayout {
     return label;
   }
 
-  createInput(type, name, placeholder) {
+  createInput(type, name, length, placeholder) {
     const input = document.createElement('input');
 
     if (type === 'tel') {
       input.setAttribute('pattern', '[0-9]{9}');
+      input.setAttribute('maxlength', length);
+    } else {
+      input.setAttribute('max', length);
     }
 
     input.setAttribute('type', type);
@@ -44,9 +47,9 @@ class BuildLayout {
 
     const labelPhone = this.createLabel('Numer telefonu', false);
     const labelCode = this.createLabel('Kod odbioru', false);
-    const labelError = this.createLabel('Sprawdź poprawność wprowadzonych danych', true);
-    const inputPhone = this.createInput('tel', 'phone', 'xxx-xxx-xxx');
-    const inputCode = this.createInput('number', 'code', 'xxxx');
+    const labelError = this.createLabel('', true);
+    const inputPhone = this.createInput('tel', 'phone', 9, 'xxxxxxxxx');
+    const inputCode = this.createInput('number', 'code', 9999, 'xxxx');
     const btn = this.createBtn('submit', 'Odbierz paczkę', 'main__btn');
 
     form.setAttribute('class', 'main__form');
@@ -69,10 +72,10 @@ class BuildLayout {
     const btnNext = this.createBtn('button', 'Odbierz kolejną paczkę', 'modal__btn');
 
     modal.setAttribute('class', 'modal');
-
     title.setAttribute('class', 'modal__title');
-    title.textContent = 'Paczka odebrana!';
     text.setAttribute('class', 'modal__text');
+
+    title.textContent = 'Paczka odebrana!';
     text.textContent = `Zrobiłeś to w czasie ${timer} sekund! Czy możemy zrobić dla Ciebie coś jeszcze?`;
 
     modal.appendChild(title);

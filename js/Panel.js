@@ -8,6 +8,7 @@ class Panel {
     this.build = new BuildLayout();
     this.timer = new Timer();
     this.loader = new Loader();
+
     this.container = document.querySelector('.main__form-container');
     this.btn = document.querySelector('.main__btn');
   }
@@ -42,8 +43,8 @@ class Panel {
     const validation = new Validation(telValue, codeValue);
 
     if (validation.start()) {
-      this.loader.showLoader();
       validation.hideError();
+      this.loader.showLoader();
 
       setTimeout(() => {
         this.showResult();
@@ -53,8 +54,8 @@ class Panel {
 
   start() {
     this.timer.startTimer();
-    this.btn.classList.add('main__btn--hidden');
     this.build.createForm();
+    this.btn.classList.add('main__btn--hidden');
 
     const btnSubmit = document.querySelector('.main__btn--submit');
 
